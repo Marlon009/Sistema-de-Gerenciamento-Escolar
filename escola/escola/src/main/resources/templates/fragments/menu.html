@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        .navigation {
+            margin-bottom: 20px;
+            padding: 15px;
+            background-color: #f2f2f2;
+            border-radius: 8px;
+            display: flex;
+            gap: 10px;
+        }
+        .navigation .button {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div th:fragment="navigation" class="navigation">
+    <a class="button" th:href="@{/}">🏠 Início</a>
+    <a class="button" th:href="@{/alunos}">👨‍🎓 Alunos</a>
+    <a class="button" th:href="@{/disciplinas}">📚 Disciplinas</a>
+    <a class="button" th:href="@{/turmas}">🏫 Turmas</a>
+    <a class="button" th:href="@{/notas/nova}">📝 Notas</a>
+
+
+</div>
+</body>
+</html>

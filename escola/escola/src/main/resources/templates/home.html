@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Início</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+  <style>
+    .centered {
+        text-align: center;
+        margin-top: 100px;
+    }
+    .options {
+        margin-top: 40px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container centered">
+  <h1>Sistema de Gerenciamento Escolar</h1>
+  <p>Escolha uma opção abaixo para começar:</p>
+
+  <div class="options">
+    <a class="button" th:href="@{/alunos}">👨‍🎓 Alunos</a>
+    <a class="button" th:href="@{/disciplinas}">📚 Disciplinas</a>
+    <a class="button" th:href="@{/turmas}">🏫 Turmas</a>
+    <a class="button" th:href="@{/notas/nova}">📝 Notas</a>
+
+  </div>
+</div>
+</body>
+</html>

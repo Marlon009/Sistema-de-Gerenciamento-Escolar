@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Nota</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+
+<div class="container">
+    <h1>Adicionar Nota</h1>
+    <form th:action="@{/notas/salvar}" method="post">
+
+        <label>Aluno:</label>
+        <select name="alunoId" required>
+            <option value="">Selecione</option>
+            <option th:each="aluno : ${alunos}" th:value="${aluno.id}" th:text="${aluno.nome}"></option>
+        </select>
+
+        <label>Disciplina:</label>
+        <select name="disciplinaId" required>
+            <option value="">Selecione</option>
+            <option th:each="disciplina : ${disciplinas}" th:value="${disciplina.id}" th:text="${disciplina.nome}"></option>
+        </select>
+
+        <label>Nota P1:</label>
+        <input type="number" name="notaP1" step="0.01" required />
+
+        <label>Nota P2:</label>
+        <input type="number" name="notaP2" step="0.01" required />
+
+        <label>Trabalho (T5):</label>
+        <input type="number" name="notaT5" step="0.01" required />
+
+        <button type="submit">Salvar</button>
+        <a th:href="@{/notas}">Voltar</a>
+    </form>
+</div>
+</body>
+</html>

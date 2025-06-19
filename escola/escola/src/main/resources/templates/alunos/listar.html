@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Alunos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+<div class="container">
+    <h1>Lista de Alunos</h1>
+    <a th:href="@{/alunos/novo}">Novo Aluno</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Nome</th>
+            <th>Matrícula</th>
+            <th>Turma</th>
+            <th>Média</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="aluno : ${alunos}">
+            <td th:text="${aluno.nome}">Nome</td>
+            <td th:text="${aluno.matricula}">Matrícula</td>
+            <td th:text="${aluno.turma.nome}">Turma</td>
+            <td th:text="${aluno.calcularMedia()}">Média</td>
+            <td>
+                <a th:href="@{'/alunos/editar/' + ${aluno.id}}">Editar</a> |
+                <a th:href="@{'/alunos/deletar/' + ${aluno.id}}">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

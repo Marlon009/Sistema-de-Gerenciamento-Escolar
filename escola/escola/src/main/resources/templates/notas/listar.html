@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Notas Cadastradas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+
+<div class="container">
+    <h1>Lista de Notas</h1>
+    <a class="button" th:href="@{/notas/nova}">➕ Adicionar Nota</a>
+    <table>
+        <thead>
+        <tr>
+            <th>Aluno</th>
+            <th>Disciplina</th>
+            <th>Nota P1</th>
+            <th>Nota P2</th>
+            <th>Trabalho (T5)</th>
+            <th>Média</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="nota : ${notas}">
+            <td th:text="${nota.aluno.nome}">Aluno</td>
+            <td th:text="${nota.disciplina.nome}">Disciplina</td>
+            <td th:text="${nota.notaP1}">0.0</td>
+            <td th:text="${nota.notaP2}">0.0</td>
+            <td th:text="${nota.notaT5}">0.0</td>
+            <td th:text="${nota.getMedia()}">0.0</td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

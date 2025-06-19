@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Lista de Turmas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+<div class="container">
+    <h1>Lista de Turmas</h1>
+    <table>
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Ações</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="turma : ${turmas}">
+            <td th:text="${turma.id}"></td>
+            <td th:text="${turma.nome}"></td>
+            <td>
+                <a th:href="@{/turmas/editar/{id}(id=${turma.id})}">Editar</a> |
+                <a th:href="@{/turmas/deletar/{id}(id=${turma.id})}">Excluir</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    <br>
+    <a th:href="@{/turmas/novo}">Nova Turma</a>
+</div>
+</body>
+</html>

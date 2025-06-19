@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Nova Disciplina</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+
+<div class="container">
+    <h1>Nova Disciplina</h1>
+
+    <form th:action="@{/disciplinas/salvar}" th:object="${disciplina}" method="post">
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required />
+
+        <button type="submit">Salvar</button>
+    </form>
+
+    <a th:href="@{/disciplinas}">Voltar</a>
+</div>
+</body>
+</html>

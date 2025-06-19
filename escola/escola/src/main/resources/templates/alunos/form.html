@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Novo Aluno</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.min.css">
+</head>
+<body>
+<div th:replace="fragments/menu :: navigation"></div>
+<div class="container">
+    <h1>Novo Aluno</h1>
+    <form th:action="@{/alunos/salvar}" th:object="${aluno}" method="post">
+        <input type="hidden" th:field="*{id}" />
+
+        <label>Nome:</label>
+        <input type="text" th:field="*{nome}" required />
+
+        <label>Matrícula:</label>
+        <input type="text" th:field="*{matricula}" required />
+
+        <label>Idade:</label>
+        <input type="number" th:field="*{idade}" required />
+
+        <label>Turma:</label>
+        <select th:field="*{turma.id}" required>
+            <option value="">Selecione uma turma</option>
+            <option th:each="turma : ${turmas}" th:value="${turma.id}" th:text="${turma.nome}"></option>
+        </select>
+
+        <label>Disciplinas:</label>
+        <div th:each="disciplina : ${disciplinas}">
+            <input type="checkbox" th:field="*{disciplinas}" th:value="${disciplina.id}" />
+            <label th:text="${disciplina.nome} + ' (Nota: ' + disciplina.nota + ')'" />
+        </div>
+
+        <button type="submit">Salvar</button>
+        <a th:href="@{/alunos}">Voltar</a>
+    </form>
+</div>
+</body>
+</html>
